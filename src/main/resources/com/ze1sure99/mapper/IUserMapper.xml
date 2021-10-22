@@ -6,7 +6,7 @@
      <!--resultMap中 property对应的是pojo实体中id,orderTime,total中的内容,column对应的是数据库中id,orderTime,total中的内容-->
      <resultMap id="orderMap" type="com.ze1sure99.pojo.Order">
          <result property="id" column="id"></result>
-         <result property="orderTime" column="oderTime"></result>
+         <result property="orderTime" column="ordertime"></result>
          <result property="total" column="total"></result>
          <association property="user" javaType="com.ze1sure99.pojo.User">
              <result property="id" column="uid"></result>

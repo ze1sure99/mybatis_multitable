@@ -37,5 +37,11 @@
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
         </dependency>
+        <!--mybatis坐标-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.5</version>
+        </dependency>
     </dependencies>
 </project>
