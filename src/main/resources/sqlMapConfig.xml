@@ -31,6 +31,6 @@
     <mappers>
         <!--如果用打包的方式引入配置文件,得同包同名-->
         <package name="com.ze1sure99.mapper"/>
-<!--        <mapper resource="IUserMapper.xml"></mapper>-->
+<!--        <mapper resource="IOderMapper.xml"></mapper>-->
     </mappers>
 </configuration>

@@ -1,8 +1,20 @@
 package com.ze1sure99.pojo;
 
+import java.util.List;
+
 public class User {
     private Integer id;
     private String username;
+    // 该用户所具有的订单信息
+    private List<Order> orderList;
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
 
     public Integer getId() {
         return id;
@@ -22,10 +34,10 @@ public class User {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("User{");
-        sb.append("id=").append(id);
-        sb.append(", username='").append(username).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", orderList=" + orderList +
+                '}';
     }
 }
