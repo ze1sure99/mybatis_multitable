@@ -1,12 +1,24 @@
 package com.ze1sure99.pojo;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+public class User implements Serializable {
     private Integer id;
     private String username;
-    // 该用户所具有的订单信息
-    private List<Order> orderList;
+    //表示用户关联的信息
+    private List<Order> orderList = new ArrayList<Order>();
+    //表示用户关联的角色
+    private List<Role> roleList = new ArrayList<Role>();
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
 
     public List<Order> getOrderList() {
         return orderList;
@@ -37,7 +49,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", orderList=" + orderList +
+                ", roleList=" + roleList +
                 '}';
     }
 }

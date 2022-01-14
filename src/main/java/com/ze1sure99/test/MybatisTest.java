@@ -3,11 +3,13 @@ package com.ze1sure99.test;
 import com.ze1sure99.mapper.IOrderMapper;
 import com.ze1sure99.mapper.IUserMapper;
 import com.ze1sure99.pojo.Order;
+import com.ze1sure99.pojo.Role;
 import com.ze1sure99.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -15,6 +17,10 @@ import java.io.InputStream;
 import java.util.List;
 
 public class MybatisTest {
+    /**
+     * 测试一对一查询
+     * @throws IOException
+     */
     @Test
     public void test1() throws IOException {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
@@ -26,6 +32,11 @@ public class MybatisTest {
             System.out.println(order);
         }
     }
+
+    /**
+     * 测试一对多查询
+     * @throws IOException
+     */
     @Test
     public void test2() throws IOException {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
@@ -39,6 +50,18 @@ public class MybatisTest {
             System.out.println(user);
             System.out.println("===================");
         }
-
     }
+    @Test
+    public void test3() throws IOException{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        IUserMapper mapper = sqlSession.getMapper(IUserMapper.class);
+        List<User> allUserAndRole = mapper.findAllUserAndRole();
+        for (User u : allUserAndRole){
+            System.out.println(u);
+        }
+    }
+
+
 }
