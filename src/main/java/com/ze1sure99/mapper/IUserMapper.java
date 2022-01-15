@@ -5,7 +5,9 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.junit.Before;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface IUserMapper {
@@ -30,4 +32,6 @@ public interface IUserMapper {
     //删除用户
     @Delete("delete from user where id = #{id}")
     public void deleteUser(Integer id);
+
+
 }

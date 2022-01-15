@@ -63,5 +63,41 @@ public class MybatisTest {
         }
     }
 
+    private IUserMapper userMapper;
+    @Before  //在@test之前执行
+    public void befor() throws IOException{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        userMapper  = sqlSession.getMapper(IUserMapper.class);
+    }
+    @Test
+    public void addUser(){
+        User user = new User();
+        user.setId(3);
+        user.setUsername("测试数据");
+        userMapper.addUser(user);
+    }
+
+    @Test
+    public void updateUser(){
+        User user =  new User();
+        user.setId(3);
+        user.setUsername("修改了测试数据");
+        userMapper.updateUser(user);
+    }
+
+    @Test
+    public void selectUser(){
+        List<User> users = userMapper.selectUser();
+        for (User user : users) {
+            System.out.println(user);
+        }
+    }
+
+    @Test
+    public void deleteUser(){
+        userMapper.deleteUser(3);
+    }
 
 }
