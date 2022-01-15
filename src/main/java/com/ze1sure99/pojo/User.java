@@ -49,7 +49,7 @@ public class User implements Serializable {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", roleList=" + roleList +
+                ", orderList=" + orderList +
                 '}';
     }
 }

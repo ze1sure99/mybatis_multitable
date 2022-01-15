@@ -1,10 +1,8 @@
 package com.ze1sure99.mapper;
 
+import com.ze1sure99.pojo.Order;
 import com.ze1sure99.pojo.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.junit.Before;
 
 import java.io.IOException;
@@ -32,6 +30,10 @@ public interface IUserMapper {
     //删除用户
     @Delete("delete from user where id = #{id}")
     public void deleteUser(Integer id);
+
+   //根据id查询用户
+    @Select("select * from user where id = #{id}")
+    public User findUserById(Integer id);
 
 
 }

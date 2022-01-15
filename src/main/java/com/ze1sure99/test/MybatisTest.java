@@ -3,7 +3,6 @@ package com.ze1sure99.test;
 import com.ze1sure99.mapper.IOrderMapper;
 import com.ze1sure99.mapper.IUserMapper;
 import com.ze1sure99.pojo.Order;
-import com.ze1sure99.pojo.Role;
 import com.ze1sure99.pojo.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -64,12 +63,14 @@ public class MybatisTest {
     }
 
     private IUserMapper userMapper;
+    private IOrderMapper orderMapper;
     @Before  //在@test之前执行
     public void befor() throws IOException{
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession(true);
         userMapper  = sqlSession.getMapper(IUserMapper.class);
+        orderMapper  = sqlSession.getMapper(IOrderMapper.class);
     }
     @Test
     public void addUser(){
@@ -100,4 +101,11 @@ public class MybatisTest {
         userMapper.deleteUser(3);
     }
 
+    @Test
+    public void oneToOne(){
+        List<Order> orderAndUser = orderMapper.findOrderAndUser();
+        for (Order order : orderAndUser) {
+            System.out.println(order);
+        }
+    }
 }

@@ -29,6 +29,7 @@
     </environments>
     <!--引入映射配置文件-->
     <mappers>
+        <!--<mapper resource="com.ze1sure99.mapper.IUserMapper"></mapper> -->
         <!--如果用打包的方式引入配置文件,得同包同名-->
         <package name="com.ze1sure99.mapper"/>
 <!--        <mapper resource="IOderMapper.xml"></mapper>-->
