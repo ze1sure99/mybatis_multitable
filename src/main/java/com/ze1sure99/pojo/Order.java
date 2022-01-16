@@ -46,7 +46,6 @@ public class Order {
         sb.append("id=").append(id);
         sb.append(", orderTime='").append(orderTime).append('\'');
         sb.append(", total=").append(total);
-        sb.append(", user=").append(user);
         sb.append('}');
         return sb.toString();
     }
